@@ -11,7 +11,8 @@ int agregarEmpleados(int x);
 void listaEmpleados(int nume);
 void ModificarSalario();
 void MostrarHG(int nume);
-int eliminarEmpleado(int nume);
+void eliminarEmpleado(int nume);
+void ModificarSalNivel();
 
 struct info_direccion{  
  char direccion [30];
@@ -111,7 +112,7 @@ int main()
         eliminarEmpleado(n);
        break;
      case 5:
-       
+       ModificarSalNivel();
        break;
     case 6:
         listaEmpleados(n);
@@ -213,7 +214,7 @@ void MostrarHG(int nume)
 
 }
 
-int eliminarEmpleado(int nume)
+void eliminarEmpleado(int nume)
 {
     int numP=0;
     cout<<"Bienvenido al sistema de borrado de datos"<<endl;
@@ -226,6 +227,36 @@ int eliminarEmpleado(int nume)
 
     cout<<"Elimindado con exito!"<<endl;
     
+    
+}
+
+void ModificarSalNivel()
+{
+    int NumP,Nivel;
+    double sal,resul;
+    cout<<"Porfavor ingresa el ID del empleado a aumentar el sueldo"<<endl;
+    cin>>NumP;
+     Nivel=empleado[NumP].nivel;
+     switch(Nivel)
+     {
+         case 1: 
+                cout<<"Lo sentimos este empleado no puede actualizar su salario ya que su nivel es 1";
+         break;
+
+         case 2:
+            sal=empleado[NumP].salario;
+            resul=sal*10/100;
+            empleado[NumP].salario=sal+resul;
+         cout<<"Se cambio el salario con exito por favor consultarlo en la opcion 6(Lista)"<<endl;
+         break;
+
+         case 3: 
+         sal=empleado[NumP].salario;
+            resul=sal*15/100;
+            empleado[NumP].salario=sal+resul;
+         cout<<"Se cambio el salario con exito por favor consultarlo en la opcion 6(Lista)"<<endl;
+         break;
+     }
     
 }
 
